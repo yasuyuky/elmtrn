@@ -17,3 +17,7 @@ npm install
 elm make -y
 gulp
 ```
+
+# License
+
+MIT

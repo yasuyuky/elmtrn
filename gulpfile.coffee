@@ -4,7 +4,6 @@ $ = require('gulp-load-plugins')()
 
 g.task 'watch', ->
   g.watch ['app/src/**/*.elm'],['elm']
-  console.log electron.start
   electron.start()
   g.watch ['app/app.js', 'app/*.html'], ->
     electron.restart()

@@ -4,8 +4,7 @@
   "scripts": {
     "run": "./node_modules/.bin/electron ."
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "coffee-script": "^1.9.2",
     "electron-connect": "^0.2.1",
@@ -15,5 +14,10 @@
     "gulp-load-plugins": "^0.8.1",
     "gulp-logger": "0.0.2",
     "gulp-plumber": "^0.6.6"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yasuyuky/elmtrn"
+  },
+  "license": "MIT"
 }

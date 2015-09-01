@@ -7,7 +7,13 @@ app.on('window-all-closed', function() {
 });
 
 app.on('ready', function() {
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+  mainWindow = new BrowserWindow({
+    "width": 225,
+    "height": 225,
+    "transparent": true,
+    "frame": false,
+    "always-on-top": true,
+    "resizable": false });
   mainWindow.loadUrl('file://' + __dirname + '/app.html');
   mainWindow.on('closed', function() {
     mainWindow = null;

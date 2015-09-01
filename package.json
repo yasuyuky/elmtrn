@@ -8,6 +8,7 @@
   "devDependencies": {
     "coffee-script": "^1.9.2",
     "electron-connect": "^0.2.1",
+    "electron-packager": "^5.0.2",
     "electron-prebuilt": "^0.26.0",
     "gulp": "^3.8.11",
     "gulp-elm": "^0.2.0",

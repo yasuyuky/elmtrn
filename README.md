@@ -1,4 +1,4 @@
-# elmtrn
+# <img src="./icons/elmtrn.png" width="32" height="32" /> elmtrn
 
 elm + electron boiler plate
 

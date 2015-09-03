@@ -10,8 +10,8 @@ elm + electron boiler plate
 
 # Quickstart
 
-```
-git checkout https://github.com/yasuyuky/elmtrn
+```bash
+git clone git@github.com:yasuyuky/elmtrn.git
 cd elmtrn
 npm install
 elm make -y

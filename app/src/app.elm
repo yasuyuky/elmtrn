@@ -20,7 +20,7 @@ model : Signal Model
 model = Signal.foldp update initialModel signals
 
 signals = Signal.mergeMany [ actions.signal
-                           , updateTime <~ (Native.Log.log (every second))
+                           , UpdateTime <~ (Native.Log.log (every second))
                            ]
 
 actions : Signal.Mailbox Action
@@ -34,9 +34,6 @@ initialModel = { time=Native.Unsafe.unsignal(every second) }
 -- actions
 type Action = NoOp
             | UpdateTime Time
-
-updateTime t = UpdateTime t
-
 
 update : Action -> Model -> Model
 update action model =

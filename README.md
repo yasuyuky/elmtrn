@@ -11,10 +11,10 @@ elm + electron boiler plate
 # Quickstart
 
 ```
-git checkout https://github.com/yasuyuky/elmtrn
+git clone https://github.com/yasuyuky/elmtrn
 cd elmtrn
 npm install
-elm make -y
+elm make --yes
 gulp
 ```
 

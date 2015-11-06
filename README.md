@@ -13,6 +13,7 @@ elm + electron boiler plate
 ```
 git clone https://github.com/yasuyuky/elmtrn
 cd elmtrn
+npm install -g electron-prebuilt
 npm install
 elm make --yes
 gulp

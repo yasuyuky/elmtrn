@@ -7,14 +7,13 @@
   "dependencies": {},
   "devDependencies": {
     "coffee-script": "^1.9.2",
-    "electron-connect": "^0.2.1",
-    "electron-packager": "^5.0.2",
-    "electron-prebuilt": "^0.26.0",
-    "gulp": "^3.8.11",
+    "electron-connect": "^0.3.3",
+    "electron-packager": "^5.1.1",
+    "gulp": "^3.9.0",
     "gulp-elm": "^0.2.0",
-    "gulp-load-plugins": "^0.8.1",
+    "gulp-load-plugins": "^1.1.0",
     "gulp-logger": "0.0.2",
-    "gulp-plumber": "^0.6.6"
+    "gulp-plumber": "^1.0.1"
   },
   "repository": {
     "type": "git",

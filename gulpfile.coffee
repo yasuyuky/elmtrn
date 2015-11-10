@@ -7,7 +7,7 @@ packageJson = require('./package.json')
 g.task 'watch', ->
   g.watch ['app/src/**/*.elm'],['elm']
   electron.start()
-  g.watch ['app/app.js', 'app/*.html'], ->
+  g.watch ['app/*.js', 'app/index.html'], ->
     electron.restart()
   g.watch [], ->
     electron.reload()
@@ -18,7 +18,7 @@ g.task 'elm', ->
   g.src ['app/src/**/*.elm']
     .pipe $.logger()
     .pipe $.plumber()
-    .pipe $.elm filetype:'html'
+    .pipe $.elm filetype:'js'
     .pipe g.dest "app"
 
 g.task 'package', ['elm'], ->

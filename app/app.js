@@ -13,8 +13,9 @@ app.on('ready', function() {
     "transparent": true,
     "frame": false,
     "always-on-top": true,
-    "resizable": false });
-  mainWindow.loadUrl('file://' + __dirname + '/app.html');
+    "resizable": false
+  });
+  mainWindow.loadUrl('file://' + __dirname + '/index.html');
   mainWindow.on('closed', function() {
     mainWindow = null;
   });

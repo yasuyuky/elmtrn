@@ -41,7 +41,7 @@ update : Action -> Model -> Model
 update action model =
   case action of
     NoOp -> model
-    UpdateTime t -> { model | time<-t }
+    UpdateTime t -> { model | time = t }
 
 -- view
 view : Address Action -> Model -> Html

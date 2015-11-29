@@ -4,7 +4,7 @@ import Color exposing (..)
 import Graphics.Collage exposing (..)
 import Graphics.Element exposing (..)
 import Time exposing (..)
-import Signal exposing (Signal, Address, (<~))
+import Signal exposing (Signal, Address)
 
 import Native.Log
 import Native.Unsafe
@@ -14,7 +14,7 @@ import Html.Attributes exposing (style)
 
 draggable = style [("-webkit-app-region","drag")]
 
-main = (view actions.address) <~ model
+main = Signal.map (view actions.address) model
 
 -- signal handler
 
@@ -22,7 +22,7 @@ model : Signal Model
 model = Signal.foldp update initialModel signals
 
 signals = Signal.mergeMany [ actions.signal
-                           , UpdateTime <~ (Native.Log.log (every second))
+                           , Signal.map UpdateTime (Native.Log.log (every second))
                            ]
 
 actions : Signal.Mailbox Action
@@ -41,7 +41,7 @@ update : Action -> Model -> Model
 update action model =
   case action of
     NoOp -> model
-    UpdateTime t -> { model | time<-t }
+    UpdateTime t -> { model | time = t }
 
 -- view
 view : Address Action -> Model -> Html

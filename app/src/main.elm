@@ -1,51 +1,41 @@
-module Main where
+module Main exposing (..)
 
 import Color exposing (..)
-import Graphics.Collage exposing (..)
-import Graphics.Element exposing (..)
+import Collage exposing (..)
+import Element exposing (..)
 import Time exposing (..)
-import Signal exposing (Signal, Address)
+import Task exposing (perform)
 
-import Native.Log
-import Native.Unsafe
+import Platform.Cmd as Cmd
+import Platform.Sub as Sub
 
 import Html exposing (..)
+import Html.App as App
 import Html.Attributes exposing (style)
 
 draggable = style [("-webkit-app-region","drag")]
 
-main = Signal.map (view actions.address) model
+main = App.program { init=(initModel,initCmd)
+                   , update=update
+                   , subscriptions=subscriptions
+                   , view=view }
 
--- signal handler
-
-model : Signal Model
-model = Signal.foldp update initialModel signals
-
-signals = Signal.mergeMany [ actions.signal
-                           , Signal.map UpdateTime (Native.Log.log (every second))
-                           ]
-
-actions : Signal.Mailbox Action
-actions = Signal.mailbox NoOp
-
--- model
+-- MODEL
 type alias Model = { time:Time }
 
-initialModel = { time=Native.Unsafe.unsignal(every second) }
+-- UPDATE
+type Msg = NoOp
+         | UpdateTime Time
 
--- actions
-type Action = NoOp
-            | UpdateTime Time
+update : Msg -> Model -> (Model, Cmd Msg)
+update msg model =
+  case msg of
+    NoOp -> (model, Cmd.none)
+    UpdateTime t -> ({ model | time = t }, Cmd.none)
 
-update : Action -> Model -> Model
-update action model =
-  case action of
-    NoOp -> model
-    UpdateTime t -> { model | time = t }
-
--- view
-view : Address Action -> Model -> Html
-view address model = clock model.time
+-- VIEW
+view : Model -> Html Msg
+view model = clock model.time
 
 clock t =
   div [draggable]
@@ -55,9 +45,8 @@ clock t =
       , hand orange 100 (t)
       , hand charcoal 100 (t/60)
       , hand charcoal 60 (t/720)
-      ] |> fromElement
+      ] |> toHtml
     ]
-
 
 hand clr len time =
   let
@@ -65,3 +54,12 @@ hand clr len time =
   in
     segment (0,0) (fromPolar (len,angle))
       |> traced (solid clr)
+
+-- SUBSCRIPTIONS
+subscriptions model =
+  every second UpdateTime
+
+-- INIT
+initModel = { time=0 }
+
+initCmd = perform (always NoOp) UpdateTime now

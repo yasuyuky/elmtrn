@@ -4,7 +4,7 @@ elm + electron boiler plate
 
 # Requirement
 
-- elm
+- elm (v 0.17)
 - npm
 - gulp
 

@@ -7,10 +7,10 @@
   "dependencies": {},
   "devDependencies": {
     "coffee-script": "^1.9.2",
-    "electron-connect": "^0.3.3",
-    "electron-packager": "^5.1.1",
+    "electron-connect": "^0.4.2",
+    "electron-packager": "^7.0.3",
     "gulp": "^3.9.0",
-    "gulp-elm": "^0.2.0",
+    "gulp-elm": "^0.4.4",
     "gulp-load-plugins": "^1.1.0",
     "gulp-logger": "0.0.2",
     "gulp-plumber": "^1.0.1"

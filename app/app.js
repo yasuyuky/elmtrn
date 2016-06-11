@@ -1,5 +1,5 @@
-var app = require('app');
-var BrowserWindow = require('browser-window');
+var {app} = require('electron');
+var {BrowserWindow} = require('electron');
 var mainWindow = null;
 
 app.on('window-all-closed', function() {
@@ -15,7 +15,7 @@ app.on('ready', function() {
     "always-on-top": true,
     "resizable": false
   });
-  mainWindow.loadUrl('file://' + __dirname + '/index.html');
+  mainWindow.loadURL('file://' + __dirname + '/index.html');
   mainWindow.on('closed', function() {
     mainWindow = null;
   });

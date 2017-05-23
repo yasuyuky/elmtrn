@@ -6,7 +6,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "coffee-script": "^1.9.2",
     "electron-connect": "^0.4.2",
     "electron-packager": "^7.0.3",
     "gulp": "^3.9.0",

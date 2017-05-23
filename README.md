@@ -4,7 +4,7 @@ elm + electron boiler plate
 
 # Requirement
 
-- elm (v 0.17)
+- elm (v 0.18)
 - npm
 - gulp
 
@@ -13,7 +13,7 @@ elm + electron boiler plate
 ```
 git clone https://github.com/yasuyuky/elmtrn
 cd elmtrn
-npm install -g electron-prebuilt
+npm install -g electron
 npm install
 elm make --yes
 gulp

@@ -10,15 +10,16 @@ import Platform.Cmd as Cmd
 import Platform.Sub as Sub
 
 import Html exposing (..)
-import Html.App as App
 import Html.Attributes exposing (style)
 
+draggable : Attribute msg
 draggable = style [("-webkit-app-region","drag")]
 
-main = App.program { init=(initModel,initCmd)
-                   , update=update
-                   , subscriptions=subscriptions
-                   , view=view }
+main : Program Never Model Msg
+main = program { init=(initModel,initCmd)
+               , update=update
+               , subscriptions=subscriptions
+               , view=view }
 
 -- MODEL
 type alias Model = { time:Time }
@@ -37,6 +38,7 @@ update msg model =
 view : Model -> Html Msg
 view model = clock model.time
 
+clock : Time -> Html Msg
 clock t =
   div [draggable]
     [ collage 225 225
@@ -48,6 +50,7 @@ clock t =
       ] |> toHtml
     ]
 
+hand : Color -> Float -> Time -> Form
 hand clr len time =
   let
     angle = degrees (90 - 6 * inSeconds time)
@@ -56,10 +59,13 @@ hand clr len time =
       |> traced (solid clr)
 
 -- SUBSCRIPTIONS
+subscriptions : Model -> Sub Msg
 subscriptions model =
   every second UpdateTime
 
 -- INIT
+initModel : Model
 initModel = { time=0 }
 
-initCmd = perform (always NoOp) UpdateTime now
+initCmd : Cmd Msg
+initCmd = perform UpdateTime now

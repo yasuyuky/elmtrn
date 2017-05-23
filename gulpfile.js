@@ -3,6 +3,7 @@ const electron = require('electron-connect').server.create();
 const packager = require('electron-packager');
 const $ = require('gulp-load-plugins')();
 const packageJson = require('./package.json');
+const extend = require('util')._extend;
 
 g.task('watch', () => {
   g.watch(['app/src/**/*.elm'],['elm']);
@@ -32,9 +33,9 @@ g.task('package', ['elm'], ()=>{
     overwrite: true,
   }
 
-  darwinParam = Object.assign(commonParam, {platform:'darwin', icon: './image/elmtrn.icns'});
-  linuxParam  = Object.assggn(commonParam, {platform:'linux',  icon: './image/elmtrn.png'});
-  win32Param  = Object.assggn(commonParam, {platform:'win32',  icon: './image/elmtrn.ico'});
+  darwinParam = extend(commonParam, {platform:'darwin', icon: './image/elmtrn.icns'});
+  linuxParam  = extend(commonParam, {platform:'linux',  icon: './image/elmtrn.png'});
+  win32Param  = extend(commonParam, {platform:'win32',  icon: './image/elmtrn.ico'});
   packager(darwinParam, console.log);
   packager(linuxParam , console.log);
   packager(win32Param , console.log);

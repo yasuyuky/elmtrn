@@ -21,4 +21,4 @@ gulp
 
 # License
 
-MIT
+![License:MIT](https://img.shields.io/badge/License-MIT-26abb4.svg)

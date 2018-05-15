@@ -1,5 +1,4 @@
-var {app} = require('electron');
-var {BrowserWindow} = require('electron');
+var {app, BrowserWindow} = require('electron');
 var mainWindow = null;
 
 app.on('window-all-closed', function() {

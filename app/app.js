@@ -12,7 +12,7 @@ app.on('ready', function() {
     "height": 225,
     "transparent": true,
     "frame": false,
-    "always-on-top": true,
+    "alwaysOnTop": true,
     "resizable": false
   });
   mainWindow.loadURL('file://' + __dirname + '/index.html');

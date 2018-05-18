@@ -1,10 +1,12 @@
-module Main exposing (..)
+port module Main exposing (..)
 
 import Collage exposing (..)
 import Color exposing (..)
 import Element exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (style)
+import Json.Decode as JD
+import Json.Encode as JE
 import Platform.Cmd as Cmd
 import Platform.Sub as Sub
 import Task exposing (perform)
@@ -108,3 +110,20 @@ initModel =
 initCmd : Cmd Msg
 initCmd =
     perform UpdateTime now
+
+
+
+-- PORT
+
+
+type alias Channel =
+    String
+
+
+port openIpc : Channel -> Cmd msg
+
+
+port sendIpcMessage : ( Channel, JE.Value ) -> Cmd msg
+
+
+port onIpcMessage : (( Channel, JD.Value ) -> msg) -> Sub msg

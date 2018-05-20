@@ -15,7 +15,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "electron-packager": "^12.0.2"
+    "electron-packager": "^12.1.0"
   },
   "repository": {
     "type": "git",

@@ -8,17 +8,16 @@
 </head>
 <body></body>
 <script type="text/javascript">
-  module.exports.Main.fullscreen();
-  const {ipcRenderer} = require('electron');
+module.exports.Main.fullscreen();
+const { ipcRenderer } = require("electron");
 
-  app.ports.openIpc.subscribe(channel=>{
-    ipcRenderer.on(channel,(e,v)=>{
-      app.ports.onIpcMessage.send([channel,v]);
-    });
+app.ports.openIpc.subscribe(channel => {
+  ipcRenderer.on(channel, (e, v) => {
+    app.ports.onIpcMessage.send([channel, v]);
   });
+});
 
-  app.ports.sendIpcMessage.subscribe(t=>{
-    ipcRenderer.send(t[0], t[1]);
-  });
-
+app.ports.sendIpcMessage.subscribe(t => {
+  ipcRenderer.send(t[0], t[1]);
+});
 </script>

@@ -5,6 +5,8 @@ app.on("window-all-closed", function() {
   app.quit();
 });
 
+require("electron-reload")(__dirname);
+
 app.on("ready", function() {
   mainWindow = new BrowserWindow({
     width: 225,

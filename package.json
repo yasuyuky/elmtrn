@@ -7,20 +7,16 @@
     "build:elm": "elm make app/src/main.elm --output app/main.js",
     "build:elm-package": "elm make --yes",
     "package": "npm run package:all",
-    "package:all":
-      "npm run package:darwin && npm run package:linux && npm run package:win32",
-    "package:darwin":
-      "npm run electron-packager -- --platform darwin --icon icons/elmtrn.icns",
-    "package:linux":
-      "npm run electron-packager -- --platform linux --icon icons/elmtrn.png",
-    "package:win32":
-      "npm run electron-packager -- --platform win32 --icon icons/elmtrn.ico",
-    "electron-packager":
-      "./node_modules/.bin/electron-packager ./ --electron-version 2.0.0 --out release --overwrite"
+    "package:all": "npm run package:darwin && npm run package:linux && npm run package:win32",
+    "package:darwin": "npm run electron-packager -- --platform darwin --icon icons/elmtrn.icns",
+    "package:linux": "npm run electron-packager -- --platform linux --icon icons/elmtrn.png",
+    "package:win32": "npm run electron-packager -- --platform win32 --icon icons/elmtrn.ico",
+    "electron-packager": "./node_modules/.bin/electron-packager ./ --electron-version 2.0.0 --out release --overwrite"
   },
   "dependencies": {},
   "devDependencies": {
-    "electron-packager": "^12.1.0"
+    "electron-packager": "^12.1.0",
+    "electron-reload": "^1.2.2"
   },
   "repository": {
     "type": "git",

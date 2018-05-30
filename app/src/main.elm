@@ -7,8 +7,6 @@ import Html exposing (..)
 import Html.Attributes exposing (style)
 import Json.Decode as JD
 import Json.Encode as JE
-import Platform.Cmd as Cmd
-import Platform.Sub as Sub
 import Task exposing (perform)
 import Time exposing (..)
 

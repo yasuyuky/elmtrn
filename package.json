@@ -11,6 +11,7 @@
     "package:darwin": "npm run electron-packager -- --platform darwin --icon icons/elmtrn.icns",
     "package:linux": "npm run electron-packager -- --platform linux --icon icons/elmtrn.png",
     "package:win32": "npm run electron-packager -- --platform win32 --icon icons/elmtrn.ico",
+    "postinstall": "npm run build",
     "electron-packager": "./node_modules/.bin/electron-packager ./ --electron-version 2.0.0 --out release --overwrite"
   },
   "dependencies": {},

@@ -14,7 +14,6 @@ git clone https://github.com/yasuyuky/elmtrn
 cd elmtrn
 npm install -g electron
 npm install
-npm run build
 npm start
 ```
 

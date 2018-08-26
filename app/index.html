@@ -3,12 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Main</title>
-  <style>html,head,body { padding:0; margin:0; overflow-x: hidden; } body { font-family: calibri, helvetica, arial, sans-serif; }</style>
+  <style>html,head,body { padding:0; margin:0; overflow: hidden; } body { font-family: calibri, helvetica, arial, sans-serif;  }</style>
   <script type="text/javascript" src="./main.js"></script>
 </head>
-<body></body>
+<body style="-webkit-app-region: drag"><div id="elm-app"></div></body>
 <script type="text/javascript">
-module.exports.Main.fullscreen();
+var app = Elm.Main.init({
+  node: document.getElementById('elm-app'),
+  flags: 0
+});
+
 const { ipcRenderer } = require("electron");
 
 app.ports.openIpc.subscribe(channel => {

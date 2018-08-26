@@ -1,25 +1,20 @@
 port module Main exposing (..)
 
-import Collage exposing (..)
-import Color exposing (..)
-import Element exposing (..)
+import Browser exposing (element)
 import Html exposing (..)
 import Html.Attributes exposing (style)
 import Json.Decode as JD
 import Json.Encode as JE
+import Svg exposing (..)
+import Svg.Attributes exposing (..)
 import Task exposing (perform)
-import Time exposing (..)
+import Time
 
 
-draggable : Attribute msg
-draggable =
-    style [ ( "-webkit-app-region", "drag" ) ]
-
-
-main : Program Never Model Msg
+main : Program Int Model Msg
 main =
-    program
-        { init = ( initModel, initCmd )
+    element
+        { init = always ( initModel, initCmd )
         , update = update
         , subscriptions = subscriptions
         , view = view
@@ -31,7 +26,9 @@ main =
 
 
 type alias Model =
-    { time : Time }
+    { time : Maybe Time.Posix
+    , zone : Time.Zone
+    }
 
 
 
@@ -40,7 +37,8 @@ type alias Model =
 
 type Msg
     = NoOp
-    | UpdateTime Time
+    | UpdateTime Time.Posix
+    | UpdateZone Time.Zone
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -50,41 +48,59 @@ update msg model =
             ( model, Cmd.none )
 
         UpdateTime t ->
-            ( { model | time = t }, Cmd.none )
+            ( { model | time = Just t }, Cmd.none )
+
+        UpdateZone z ->
+            ( { model | zone = z }, perform UpdateTime Time.now )
 
 
 
 -- VIEW
 
 
-view : Model -> Html Msg
+view : Model -> Svg Msg
 view model =
-    clock model.time
+    case model.time of
+        Just t ->
+            clock t model.zone
+
+        Nothing ->
+            svg [] []
 
 
-clock : Time -> Html Msg
-clock t =
-    div [ draggable ]
-        [ collage 225
-            225
-            [ filled lightGrey (ngon 12 110)
-            , outlined (solid grey) (ngon 12 110)
-            , hand orange 100 t
-            , hand charcoal 100 (t / 60)
-            , hand charcoal 60 (t / 720)
-            ]
-            |> toHtml
+clock : Time.Posix -> Time.Zone -> Svg Msg
+clock t z =
+    let
+        trans =
+            "translate(110, 110)"
+
+        sc =
+            Time.toSecond z t
+
+        mn =
+            Time.toMinute z t
+
+        hr =
+            Time.toHour z t
+    in
+    svg [ width "230", height "230" ]
+        [ circle [ fill "lightgrey", stroke "grey", cx "0", cy "0", r "100", transform trans ] []
+        , hand "orange" 100 sc trans
+        , hand "dimgrey" 100 mn trans
+        , hand "dimgrey" 60 (hr * 5) trans
         ]
 
 
-hand : Color -> Float -> Time -> Form
-hand clr len time =
+hand : String -> Float -> Int -> String -> Svg msg
+hand clr len time trans =
     let
         angle =
-            degrees (90 - 6 * inSeconds time)
+            degrees (90 - 6 * toFloat time)
+
+        ( x, y ) =
+            fromPolar ( len, angle ) |> Tuple.mapSecond negate
     in
-    segment ( 0, 0 ) (fromPolar ( len, angle ))
-        |> traced (solid clr)
+    line [ stroke clr, x1 "0", y1 "0", x2 (String.fromFloat x), y2 (String.fromFloat y), transform trans ] []
 
 
 
@@ -93,7 +109,7 @@ hand clr len time =
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    every second UpdateTime
+    Time.every 1000 UpdateTime
 
 
 
@@ -102,12 +118,12 @@ subscriptions model =
 
 initModel : Model
 initModel =
-    { time = 0 }
+    { time = Nothing, zone = Time.utc }
 
 
 initCmd : Cmd Msg
 initCmd =
-    perform UpdateTime now
+    perform UpdateZone Time.here
 
 
 

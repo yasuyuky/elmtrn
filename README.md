@@ -4,7 +4,7 @@ elm + electron boiler plate
 
 # Requirement
 
-- elm (v 0.18)
+- elm (v 0.19)
 - npm
 
 # Quickstart

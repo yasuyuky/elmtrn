@@ -16,7 +16,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "electron-packager": "^13.0.1",
+    "electron-packager": "^13.1.0",
     "electron-reload": "^1.4.0",
     "elm": "^0.19.0"
   },

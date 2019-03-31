@@ -2,7 +2,7 @@
   "name": "elmtrn",
   "main": "./app/app.js",
   "scripts": {
-    "start": "electron .",
+    "start": "APP_DEV=true electron .",
     "build": "npm run build:elm",
     "build:elm": "elm make app/src/Main.elm --output app/main.js",
     "init": "elm init",

@@ -1,11 +1,14 @@
 const { app, BrowserWindow } = require("electron");
 var mainWindow = null;
+var isDev = process.env.APP_DEV ? (process.env.APP_DEV.trim() == "true") : false;
 
 app.on("window-all-closed", function() {
   app.quit();
 });
 
-require("electron-reload")(__dirname);
+if (isDev) {
+  require("electron-reload")(__dirname);
+}
 
 app.on("ready", function() {
   mainWindow = new BrowserWindow({

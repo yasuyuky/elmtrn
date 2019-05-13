@@ -18,7 +18,7 @@
   "devDependencies": {
     "electron-packager": "^13.1.1",
     "electron-reload": "^1.4.0",
-    "elm": "^0.19.0"
+    "elm": "0.19.0-no-deps"
   },
   "repository": {
     "type": "git",

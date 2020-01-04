@@ -4,7 +4,7 @@
   "scripts": {
     "start": "APP_DEV=true electron .",
     "build": "npm run build:elm",
-    "build:elm": "elm make app/src/Main.elm --output app/main.js",
+    "build:elm": "elm make src/elm/Main.elm --output app/main.js",
     "init": "elm init",
     "package": "npm run package:all",
     "package:all": "npm run package:darwin && npm run package:linux && npm run package:win32",

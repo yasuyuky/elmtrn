@@ -7,7 +7,6 @@
     "build": "npm run build:elm && npm run build:ts",
     "build:elm": "npx elm make src/elm/Main.elm --output app/main.js",
     "build:ts": "npx tsc --skipLibCheck -p ./",
-    "init": "npx elm init",
     "pack": "npx electron-builder -lmw --dir",
     "postinstall": "npm run build"
   },

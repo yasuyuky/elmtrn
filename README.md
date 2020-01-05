@@ -1,6 +1,6 @@
 # <img src="./build/icon.png" width="32" height="32" /> elmtrn
 
-elm + electron boiler plate
+elm + typescript + electron boiler plate
 
 # Requirement
 

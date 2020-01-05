@@ -1,16 +1,12 @@
-const { app, BrowserWindow } = require("electron");
-var mainWindow = null;
-var isDev = process.env.APP_DEV ? (process.env.APP_DEV.trim() == "true") : false;
+import { app, BrowserWindow } from "electron";
+let mainWindow: BrowserWindow | null = null;
+let isDev = process.env.APP_DEV ? process.env.APP_DEV.trim() == "true" : false;
 
-app.on("window-all-closed", function() {
-  app.quit();
-});
+app.on("window-all-closed", () => app.quit());
 
-if (isDev) {
-  require("electron-reload")(__dirname);
-}
+if (isDev) require("electron-reload")(__dirname);
 
-app.on("ready", function() {
+app.on("ready", () => {
   mainWindow = new BrowserWindow({
     width: 225,
     height: 225,
@@ -20,7 +16,7 @@ app.on("ready", function() {
     resizable: false
   });
   mainWindow.loadURL("file://" + __dirname + "/index.html");
-  mainWindow.on("closed", function() {
+  mainWindow.on("closed", () => {
     mainWindow = null;
   });
 });

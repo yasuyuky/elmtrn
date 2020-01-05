@@ -1,8 +1,7 @@
-port module Main exposing (..)
+port module Main exposing (main)
 
 import Browser exposing (element)
 import Html exposing (..)
-import Html.Attributes exposing (style)
 import Json.Decode as JD
 import Json.Encode as JE
 import Svg exposing (..)
@@ -108,7 +107,7 @@ hand clr len time trans =
 
 
 subscriptions : Model -> Sub Msg
-subscriptions model =
+subscriptions _ =
     Time.every 1000 UpdateTime
 
 

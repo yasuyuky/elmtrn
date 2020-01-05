@@ -2,3 +2,5 @@ node_modules
 elm-stuff
 release
 app/main.js
+app/app.js*
+dist

@@ -1,4 +1,4 @@
-# <img src="./icons/elmtrn.png" width="32" height="32" /> elmtrn
+# <img src="./build/icon.png" width="32" height="32" /> elmtrn
 
 elm + electron boiler plate
 
@@ -12,7 +12,6 @@ elm + electron boiler plate
 ```
 git clone https://github.com/yasuyuky/elmtrn
 cd elmtrn
-npm install -g electron
 npm install
 npm start
 ```

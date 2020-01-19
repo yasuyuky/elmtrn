@@ -2,6 +2,8 @@
 
 elm + typescript + electron boiler plate
 
+[![CI Status](https://github.com/yasuyuky/elmtrn/workflows/CI/badge.svg)](https://github.com/yasuyuky/elmtrn/actions)
+
 # Requirement
 
 - elm (v 0.19)

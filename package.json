@@ -16,7 +16,7 @@
     "electron-builder": "^22.11.7",
     "electron-reload": "^1.5.0",
     "elm": "^0.19.1-5",
-    "typescript": "^4.3.2"
+    "typescript": "^4.3.3"
   },
   "build": {
     "appId": "your.id"

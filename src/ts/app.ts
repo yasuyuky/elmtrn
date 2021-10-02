@@ -6,7 +6,7 @@ app.on("window-all-closed", () => app.quit());
 
 if (isDev) require("electron-reload")(__dirname);
 
-app.on("ready", () => {
+app.whenReady().then(() => {
   mainWindow = new BrowserWindow({
     width: 225,
     height: 225,

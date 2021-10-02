@@ -13,7 +13,7 @@ app.whenReady().then(() => {
     transparent: true,
     frame: false,
     alwaysOnTop: true,
-    resizable: false
+    resizable: false,
   });
   mainWindow.loadURL("file://" + __dirname + "/index.html");
   mainWindow.on("closed", () => {

@@ -11,7 +11,7 @@
     "postinstall": "npm run build"
   },
   "devDependencies": {
-    "@types/node": "^16.11.7",
+    "@types/node": "^16.11.8",
     "electron": "^16.0.0",
     "electron-builder": "^22.13.1",
     "electron-reload": "^1.5.0",

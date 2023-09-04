@@ -13,7 +13,7 @@
   "devDependencies": {
     "@types/node": "^20.5.7",
     "electron": "^26.1.0",
-    "electron-builder": "^24.6.3",
+    "electron-builder": "^24.6.4",
     "electron-reload": "^1.5.0",
     "elm": "^0.19.1-5",
     "typescript": "^5.2.2"

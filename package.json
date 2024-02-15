@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.11.17",
-    "electron": "^28.2.2",
+    "electron": "^28.2.3",
     "electron-builder": "^24.9.1",
     "electron-reload": "^1.5.0",
     "elm": "^0.19.1-6",

@@ -6,6 +6,7 @@
     "lib": ["es6"],
     "sourceMap": true,
     "rootDir": "src/ts",
+    "skipLibCheck": true,
     "strict": true,
     "moduleResolution": "node",
     "noUnusedLocals": true

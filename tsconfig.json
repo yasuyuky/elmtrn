@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "node16",
     "target": "es6",
     "outDir": "app",
     "lib": ["es6"],
@@ -8,7 +8,7 @@
     "rootDir": "src/ts",
     "skipLibCheck": true,
     "strict": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "noUnusedLocals": true
   },
   "exclude": ["node_modules", "dist"]

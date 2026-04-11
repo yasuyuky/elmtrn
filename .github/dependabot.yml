@@ -24,3 +24,5 @@ updates:
       interval: daily
       time: "09:00"
       timezone: Asia/Tokyo
+    cooldown:
+      default-days: 3
